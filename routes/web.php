@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/usuario/pruebas','UserController@pruebas');
+Route::get('/categoria/pruebas','CategoryController@pruebas');
+Route::get('/entrada/pruebas','PostController@pruebas');
