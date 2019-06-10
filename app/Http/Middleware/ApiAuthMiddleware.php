@@ -25,7 +25,7 @@ class ApiAuthMiddleware
             $data = array(
                 'code' => 400,
                 'status' => 'error',
-                'message' => 'Error al subir imagen.'
+                'message' => 'El usuario no esta identificado.'
             );
 
             return response()->json($data, $data['code']);
