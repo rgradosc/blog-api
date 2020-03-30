@@ -214,12 +214,33 @@ class UserController extends Controller
             );
         }else{
             $data = array(
-                'code' => 400,
+                'code' => 404,
                 'status' => 'error',
                 'message' => 'La imagen no existe.'
             );
         }
 
         return new Reponse($data, $data['code']);
+    }
+
+    public function detail($id){
+        $user = User::find($id);
+
+        if(is_object($user)){
+            $data = array(
+                'code' => 200,
+                'status' => 'success',
+                'message' => $user
+            );
+        } else{
+            $data = array(
+                'code' => 404,
+                'status' => 'error',
+                'message' => 'El usuario no existe.'
+            );
+        }
+
+        return response()->json($data, $data['code']);
+
     }
 }
