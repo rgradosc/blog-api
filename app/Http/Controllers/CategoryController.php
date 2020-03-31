@@ -42,7 +42,7 @@ class CategoryController extends Controller
         return response()->json($data, $data['code']); 
     }
 
-    public function storage(Request $request){
+    public function store(Request $request){
         // Recoger los datos por post
         $json = $request->input('json', null);
         $param_array = json_decode($json, true);
@@ -99,14 +99,15 @@ class CategoryController extends Controller
             unset($param_array['created_at']);
 
             // Actualizar la categoria
-            $category = Category::where('id', $id)->update($param_array);
+            $category = Category::where('id', $id)->updateOrCreate($param_array);
 
             $data = [
                 'code' => 200,
                 'status' => 'success',
-                'category' => $category
+                'category' => $category,
+                'changes' => $param_array
             ]; 
-            
+
         } else{
             $data = [
                 'code' => 400,
