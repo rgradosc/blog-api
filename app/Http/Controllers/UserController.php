@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Helpers\JwtAuth;
 use App\User;
 
 class UserController extends Controller
@@ -79,7 +80,7 @@ class UserController extends Controller
 
     public function login(Request $request){
 
-        $jwtAuth = new \JwtAuth();
+        $jwtAuth = new JwtAuth();
         
         // Recibir datos por POST
         $json = $request->input('json', null);
@@ -119,7 +120,7 @@ class UserController extends Controller
 
     public function update(Request $request){
         $token = $request->header('Authorization');
-        $jwtAuth = new \JwtAuth();
+        $jwtAuth = new JwtAuth();
         $checkToken = $jwtAuth->checkToken($token);
 
         // Recoger los datos por POST
