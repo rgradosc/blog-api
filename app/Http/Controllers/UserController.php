@@ -144,7 +144,6 @@ class UserController extends Controller
             unset($params_array['id']);
             unset($params_array['role']);
             unset($params_array['password']);
-            unset($params_array['description']);
             unset($params_array['created_at']);
             unset($params_array['remember_token']);
 
