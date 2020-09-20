@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Helpers\JwtAuth;
 use Closure;
 
 class ApiAuthMiddleware
@@ -16,7 +17,7 @@ class ApiAuthMiddleware
     public function handle($request, Closure $next)
     {
         $token = $request->header('Authorization');
-        $jwtAuth = new \JwtAuth();
+        $jwtAuth = new JwtAuth();
         $checkToken = $jwtAuth->checkToken($token);
 
         if($checkToken){
